@@ -3,15 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validation", "Validation\Validation.csproj", "{D0647397-2667-4B85-A479-DFB8834889D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validation", "Validation\Validation.csproj", "{D0647397-2667-4B85-A479-DFB8834889D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Streaming", "Streaming\Streaming.csproj", "{2EBC8AE3-FEF2-46A4-B865-D5D9D0D03422}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Streaming", "Streaming\Streaming.csproj", "{2EBC8AE3-FEF2-46A4-B865-D5D9D0D03422}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D0647397-2667-4B85-A479-DFB8834889D9} = {D0647397-2667-4B85-A479-DFB8834889D9}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization", "Authorization\Authorization.csproj", "{5A6C0100-832B-43C5-B15A-77F259E053A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization", "Authorization\Authorization.csproj", "{5A6C0100-832B-43C5-B15A-77F259E053A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Export", "Export\Export.csproj", "{F84DEE94-0569-4C08-94A0-A05D9B81A457}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Export", "Export\Export.csproj", "{F84DEE94-0569-4C08-94A0-A05D9B81A457}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETag", "ETag\ETag.csproj", "{1BA25C8D-1DCE-47B9-B317-1C3B7994ED62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{33B20869-5210-43E5-819F-F034DAC9A8B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF", "EF\EF.csproj", "{8735405E-74C8-44C1-87AB-5E91155F80F2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5A6C0100-832B-43C5-B15A-77F259E053A6} = {5A6C0100-832B-43C5-B15A-77F259E053A6}
+		{33B20869-5210-43E5-819F-F034DAC9A8B3} = {33B20869-5210-43E5-819F-F034DAC9A8B3}
+		{D0647397-2667-4B85-A479-DFB8834889D9} = {D0647397-2667-4B85-A479-DFB8834889D9}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +45,14 @@ Global
 		{F84DEE94-0569-4C08-94A0-A05D9B81A457}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F84DEE94-0569-4C08-94A0-A05D9B81A457}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F84DEE94-0569-4C08-94A0-A05D9B81A457}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1BA25C8D-1DCE-47B9-B317-1C3B7994ED62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1BA25C8D-1DCE-47B9-B317-1C3B7994ED62}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1BA25C8D-1DCE-47B9-B317-1C3B7994ED62}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1BA25C8D-1DCE-47B9-B317-1C3B7994ED62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33B20869-5210-43E5-819F-F034DAC9A8B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33B20869-5210-43E5-819F-F034DAC9A8B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33B20869-5210-43E5-819F-F034DAC9A8B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33B20869-5210-43E5-819F-F034DAC9A8B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8735405E-74C8-44C1-87AB-5E91155F80F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8735405E-74C8-44C1-87AB-5E91155F80F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8735405E-74C8-44C1-87AB-5E91155F80F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8735405E-74C8-44C1-87AB-5E91155F80F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
