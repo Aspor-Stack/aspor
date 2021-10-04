@@ -16,7 +16,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  publish:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -24,30 +24,33 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
-      - name: .Net Build
-        # You may pin to the exact commit or the version.
-        # uses: EasyDesk/action-dotnet-build@d2c47d8701e3ea8db03dcabaacb37204fe123a22
-        uses: EasyDesk/action-dotnet-build@v1.0.0
+      - name: Publish Common
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: Common/Common.csproj
+          PACKAGE_NAME: Aspor.Common
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+      - name: Publish Validation
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: Validation/Validation.csproj
+          PACKAGE_NAME: Aspor.Validation
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+      - name: Publish Export
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: Export/Export.csproj
+          PACKAGE_NAME: Aspor.Export
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+      - name: Publish Authorization
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: Authorization/Authorization.csproj
+          PACKAGE_NAME: Aspor.Authorization
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
       - name: Publish NuGet package
         uses: rohith/publish-nuget@v2
         with:
-          # Filepath of the project to be packaged, relative to root of repository
-          PROJECT_FILE_PATH: Common/Common.csproj
-          PACKAGE_NAME: Aspor.Common
-          
-          # Filepath with version info, relative to root of repository & defaults to PROJECT_FILE_PATH
-          # VERSION_FILE_PATH: Directory.Build.props
-
-          # Regex pattern to extract version info in a capturing group
-          # VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
-
-          # Flag to toggle git tagging, enabled by default
-          # TAG_COMMIT: true
-
-          # Format of the git tag, [*] gets replaced with actual version
-          # TAG_FORMAT: v*
-
-          # API key to authenticate with NuGet server
+          PROJECT_FILE_PATH: EF/EF.csproj
+          PACKAGE_NAME: Aspor.EF
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
