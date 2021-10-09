@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 namespace Aspor.Common
 {
 
-    public class AsporODataDefaultPageFilter : IAsyncActionFilter
+    public class AsporODataDefaultPageFilter : IAsyncActionFilter, IOrderedFilter
     {
+        public int Order => 2;
 
         private readonly int _pageSize;
 
@@ -18,15 +19,18 @@ namespace Aspor.Common
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            EnableQueryAttribute queryAttribute = context.Filters.FirstOrDefault(e => e is EnableQueryAttribute) as EnableQueryAttribute;
-            if (queryAttribute != null)
+            var result = await next();
+            if (context.ModelState.IsValid)
             {
-                if (!context.HttpContext.Request.Query.ContainsKey("$top"))
+                EnableQueryAttribute queryAttribute = context.Filters.FirstOrDefault(e => e is EnableQueryAttribute) as EnableQueryAttribute;
+                if (queryAttribute != null)
                 {
-                    queryAttribute.PageSize = _pageSize;
+                    if (!context.HttpContext.Request.Query.ContainsKey("$top"))
+                    {
+                        queryAttribute.PageSize = _pageSize;
+                    }
                 }
             }
-            await next();
         }
     }
 }

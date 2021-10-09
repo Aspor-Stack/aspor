@@ -6,12 +6,12 @@ using System;
 
 namespace Aspor.Authorization.Attributes
 {
-    public class TypeRequirement : Attribute, IAuthorizationFilter
+    public class TypeRequirementAttribute : Attribute, IAuthorizationFilter
     {
 
         private readonly UserType _type;
 
-        public TypeRequirement(UserType type)
+        public TypeRequirementAttribute(UserType type)
         {
             _type = type;
         }

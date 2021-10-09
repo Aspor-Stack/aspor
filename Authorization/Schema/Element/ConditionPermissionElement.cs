@@ -1,5 +1,4 @@
-﻿
-using Aspor.Authorization.Schema.Conditions;
+﻿using Aspor.Authorization.Schema.Conditions;
 using Aspor.Authorization.User;
 using System.Collections.Generic;
 

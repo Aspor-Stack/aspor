@@ -33,7 +33,7 @@ namespace Aspor.EF
             _dbContext = dbContext;
         }
 
-        public AsporUser User { get => HttpContext.GetUser(); }
+        public new AsporUser User { get => HttpContext.GetUser(); }
 
         protected SingleResult<TEntity> Single<TEntity>(IQueryable<TEntity> queryable) where TEntity : class
         {
@@ -44,16 +44,6 @@ namespace Aspor.EF
         {
             await HttpContext.ValidateRulesAsync(entity);
             if (!ModelState.IsValid) return BadRequest(ModelState);
-
-            if (entity is IEntityExecutors executorEntity)
-            {
-                AsporUser user = HttpContext.GetUserOrDefault();
-                if (user != null)
-                {
-                    executorEntity.CreatedBy = user.Id;
-                    executorEntity.ModifiedBy = user.Id;
-                }
-            }
 
             _dbContext.Add(entity);
             await _dbContext.SaveChangesAsync();
@@ -73,6 +63,7 @@ namespace Aspor.EF
             await HttpContext.ValidateRulesAsync(entity);
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
+            _dbContext.Update(entity);
             await _dbContext.SaveChangesAsync();
 
             return Updated(entity);
@@ -90,6 +81,7 @@ namespace Aspor.EF
             await HttpContext.ValidateRulesAsync(entity);
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
+            _dbContext.Update(entity);
             await _dbContext.SaveChangesAsync();
 
             return Updated(entity);
@@ -102,7 +94,7 @@ namespace Aspor.EF
             if (entity == null) return NotFound();
 
             _dbContext.Remove(entity);
-            //await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
 
             return Ok(entity);
         }

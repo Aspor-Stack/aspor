@@ -9,12 +9,12 @@ using System;
 
 namespace Aspor.Authorization.Attributes
 {
-    public class PermissionRequirement : Attribute, IAuthorizationFilter
+    public class PermissionRequirementAttribute : Attribute, IAuthorizationFilter
     {
 
         private readonly IPermissionNode _root;
 
-        public PermissionRequirement(string permission)
+        public PermissionRequirementAttribute(string permission)
         {
             //_root = permission;
         }
