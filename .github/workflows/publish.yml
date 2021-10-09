@@ -48,7 +48,7 @@ jobs:
           PROJECT_FILE_PATH: Authorization/Authorization.csproj
           PACKAGE_NAME: Aspor.Authorization
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-      - name: Publish NuGet package
+      - name: Publish EF
         uses: rohith/publish-nuget@v2
         with:
           PROJECT_FILE_PATH: EF/EF.csproj
