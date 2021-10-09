@@ -1,0 +1,56 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  publish:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Publish Common
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: Common/Common.csproj
+          PACKAGE_NAME: Aspor.Common
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+      - name: Publish Validation
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: Validation/Validation.csproj
+          PACKAGE_NAME: Aspor.Validation
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+      - name: Publish Export
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: Export/Export.csproj
+          PACKAGE_NAME: Aspor.Export
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+      - name: Publish Authorization
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: Authorization/Authorization.csproj
+          PACKAGE_NAME: Aspor.Authorization
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+      - name: Publish NuGet package
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: EF/EF.csproj
+          PACKAGE_NAME: Aspor.EF
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
