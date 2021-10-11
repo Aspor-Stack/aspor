@@ -13,7 +13,7 @@ namespace Aspor.Validation.Extensions
             return services;
         }
 
-        public static IMvcBuilder AddAutoValidationCheck(this IMvcBuilder mvc)
+        public static IMvcBuilder AddAutoPreValidationCheck(this IMvcBuilder mvc)
         {
             mvc.AddMvcOptions(config =>
             {

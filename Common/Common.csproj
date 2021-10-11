@@ -4,8 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Aspor.Common</PackageId>
-    <Version>1.0.1</Version>
-    <Authors>Davide Wietlisbach</Authors> 
+    <Version>1.0.2</Version>
+    <Authors>Davide Wietlisbach</Authors>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance> 
   </PropertyGroup>
 
   <ItemGroup>

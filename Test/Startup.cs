@@ -32,7 +32,7 @@ namespace Test
             services.AddSingleton<ODataBatchHandler, DefaultODataBatchHandler>();
 
             services.AddControllers()
-                  .AddAutoValidationCheck()
+                  .AddAutoPreValidationCheck()
                   .AddAsporODataPageSize()
                   .AddAsporReturnPreference()
                   .AddAsporETagAutoMatch()

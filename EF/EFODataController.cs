@@ -45,6 +45,12 @@ namespace Aspor.EF
             await HttpContext.ValidateRulesAsync(entity);
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
+            if (entity is IEntityExecutors executorEntity)
+            {
+                AsporUser user = HttpContext.GetUserOrDefault();
+                if (user != null) executorEntity.CreatedBy = executorEntity.ModifiedBy = user.Id;
+            }
+
             _dbContext.Add(entity);
             await _dbContext.SaveChangesAsync();
 
@@ -59,6 +65,12 @@ namespace Aspor.EF
             if (entity == null) return NotFound();
 
             delta.Patch(entity);
+
+            if (entity is IEntityExecutors executorEntity)
+            {
+                AsporUser user = HttpContext.GetUserOrDefault();
+                if (user != null) executorEntity.ModifiedBy = user.Id;
+            }
 
             await HttpContext.ValidateRulesAsync(entity);
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -78,6 +90,12 @@ namespace Aspor.EF
 
             delta.Put(entity);
 
+            if (entity is IEntityExecutors executorEntity)
+            {
+                AsporUser user = HttpContext.GetUserOrDefault();
+                if (user != null) executorEntity.ModifiedBy = user.Id;
+            }
+
             await HttpContext.ValidateRulesAsync(entity);
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -92,6 +110,12 @@ namespace Aspor.EF
             if (HttpContext.IFMatch(queryable as IQueryable<object>)) return StatusCode(StatusCodes.Status412PreconditionFailed);
             TEntity entity = await queryable.SingleAsync();
             if (entity == null) return NotFound();
+
+            if (entity is IEntityExecutors executorEntity)
+            {
+                AsporUser user = HttpContext.GetUserOrDefault();
+                if (user != null) executorEntity.DeletedBy = user.Id;
+            }
 
             _dbContext.Remove(entity);
             await _dbContext.SaveChangesAsync();

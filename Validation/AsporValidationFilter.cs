@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 namespace Aspor.Validation
 {
 
-    public class AsporValidationFilter : IAsyncResourceFilter
+    public class AsporValidationFilter : IAsyncActionFilter
     {
-        public async Task OnResourceExecutionAsync(ResourceExecutingContext context, ResourceExecutionDelegate next)
+        public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
             if (!context.ModelState.IsValid)
             {

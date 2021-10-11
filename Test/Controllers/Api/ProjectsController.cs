@@ -38,6 +38,8 @@ namespace Test.Controllers.Api
         [EnableQuery]
         public async Task<IActionResult> PostProject([FromBody] Project project)
         {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            project.Name = "Test";
             return await PostEntityAsync(project);
         }
 
