@@ -34,7 +34,8 @@ namespace Aspor.Common
         //
         //   T:System.Security.SecurityException:
         //     The caller does not have the required permission to perform this operation.
-        public static string? Get(string variable, EnvironmentVariableTarget target)
+
+        public static string Get(string variable, EnvironmentVariableTarget target)
         {
             return Environment.GetEnvironmentVariable(variable, target);
         }
@@ -56,7 +57,7 @@ namespace Aspor.Common
         //
         //   T:System.Security.SecurityException:
         //     The caller does not have the required permission to perform this operation.
-        public static string? GetEnvironmentVariable(string variable)
+        public static string Get(string variable)
         {
             return Environment.GetEnvironmentVariable(variable);
         }
