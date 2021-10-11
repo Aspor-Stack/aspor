@@ -1,4 +1,5 @@
 ﻿using Aspor.Authorization.Schema;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Aspor.Authorization.Extensions
@@ -9,10 +10,12 @@ namespace Aspor.Authorization.Extensions
 
         public static IServiceCollection AddPermissionSchema(this IServiceCollection services, string file = "permissions.json")
         {
-            services.AddSingleton(PermissionSchemaReader.ReadFromFile(file));
-            return services;
+            return services.AddSingleton(PermissionSchemaReader.ReadFromFile(file));
         }
-
+        public static IApplicationBuilder UseAsporAuthorization(this IApplicationBuilder builder)
+        {
+            return builder.UseMiddleware<AsporAuthorizationMiddleware>();
+        }
     }
 
 }

@@ -9,8 +9,7 @@ namespace Aspor.Validation.Extensions
 
         public static IServiceCollection AddAsporValidation(this IServiceCollection services)
         {
-            services.AddSingleton<IObjectModelValidator, AsporObjectModelValidator>();
-            return services;
+            return services.AddSingleton<IObjectModelValidator, AsporObjectModelValidator>();
         }
 
         public static IMvcBuilder AddAutoPreValidationCheck(this IMvcBuilder mvc)
