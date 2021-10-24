@@ -45,10 +45,17 @@ namespace Aspor.EF
             await HttpContext.ValidateRulesAsync(entity);
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
+
             if (entity is IEntityExecutors executorEntity)
             {
                 AsporUser user = HttpContext.GetUserOrDefault();
                 if (user != null) executorEntity.CreatedBy = executorEntity.ModifiedBy = user.Id;
+            }
+
+            if(entity is IEntityTenancy entityTenancy)
+            {
+                AsporUser user = HttpContext.GetUserOrDefault();
+                if (user != null) entityTenancy.TenantId = user.TenantId;
             }
 
             _dbContext.Add(entity);

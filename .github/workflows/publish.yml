@@ -54,3 +54,21 @@ jobs:
           PROJECT_FILE_PATH: EF/EF.csproj
           PACKAGE_NAME: Aspor.EF
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+      - name: Publish Streaming.Core
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: Streaming.Core/Streaming.Core.csproj
+          PACKAGE_NAME: Aspor.Streaming.Core
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+      - name: Publish Streaming
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: Streaming/Streaming.csproj
+          PACKAGE_NAME: Aspor.Streaming
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+      - name: Publish Streaming.RabbitMQ
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: Streaming.RabbitMQ/Streaming.RabbitMQ.csproj
+          PACKAGE_NAME: Aspor.Streaming.RabbitMQ
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}

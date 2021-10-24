@@ -1,10 +1,17 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.OData.Batch;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Aspor.Common.Extensions
 {
 
     public static class SetupExtensions
     {
+
+        public static IServiceCollection AddODataBatchHandler(this IServiceCollection services)
+        {
+            services.AddSingleton<ODataBatchHandler, DefaultODataBatchHandler>();
+            return services;
+        }
 
         public static IMvcBuilder AddAsporODataPageSize(this IMvcBuilder mvc, int pageSize = 1000)
         {

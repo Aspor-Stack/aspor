@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Validation\Validation.csproj" />
+    <ProjectReference Include="..\Streaming.Core\Streaming.Core.csproj" />
   </ItemGroup>
 
 

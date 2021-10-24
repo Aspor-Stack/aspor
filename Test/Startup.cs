@@ -1,4 +1,6 @@
 using Aspor.Common.Extensions;
+using Aspor.Streaming;
+using Aspor.Streaming.Core.Extensions;
 using Aspor.Validation.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Streaming;
 using Test.Api;
 using Test.Model;
 
@@ -27,12 +30,17 @@ namespace Test
             services.AddCors();
             services.AddAuthorization();
             services.AddRouting();
-            services.AddAsporValidation();
+            services.AddODataBatchHandler();
 
-            services.AddSingleton<ODataBatchHandler, DefaultODataBatchHandler>();
+            services.AddAsporValidation();
+            services.AddAsporStreaming((provider=>
+            {
+                provider.UseMemoryBus();
+            }));
 
             services.AddControllers()
                   .AddAutoPreValidationCheck()
+                  .AddAsporODataStreaming(StreamMode.AUTO)
                   .AddAsporODataPageSize()
                   .AddAsporReturnPreference()
                   .AddAsporETagAutoMatch()

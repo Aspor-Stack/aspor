@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validation", "Validation\Va
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Streaming", "Streaming\Streaming.csproj", "{2EBC8AE3-FEF2-46A4-B865-D5D9D0D03422}"
 	ProjectSection(ProjectDependencies) = postProject
-		{D0647397-2667-4B85-A479-DFB8834889D9} = {D0647397-2667-4B85-A479-DFB8834889D9}
+		{0160B2CD-87D8-49FB-91AD-47EADE0574FF} = {0160B2CD-87D8-49FB-91AD-47EADE0574FF}
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization", "Authorization\Authorization.csproj", "{5A6C0100-832B-43C5-B15A-77F259E053A6}"
@@ -23,7 +23,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EF", "EF\EF.csproj", "{8735
 		{D0647397-2667-4B85-A479-DFB8834889D9} = {D0647397-2667-4B85-A479-DFB8834889D9}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{7B569F0B-BAEE-426D-B493-1CFC527CF81D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{7B569F0B-BAEE-426D-B493-1CFC527CF81D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2EBC8AE3-FEF2-46A4-B865-D5D9D0D03422} = {2EBC8AE3-FEF2-46A4-B865-D5D9D0D03422}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Streaming.Core", "Streaming.Core\Streaming.Core.csproj", "{0160B2CD-87D8-49FB-91AD-47EADE0574FF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Streaming.RabbitMQ", "Streaming.RabbitMQ\Streaming.RabbitMQ.csproj", "{D5D19EB5-1BAE-4551-910D-3794C9074823}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0160B2CD-87D8-49FB-91AD-47EADE0574FF} = {0160B2CD-87D8-49FB-91AD-47EADE0574FF}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +69,14 @@ Global
 		{7B569F0B-BAEE-426D-B493-1CFC527CF81D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B569F0B-BAEE-426D-B493-1CFC527CF81D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B569F0B-BAEE-426D-B493-1CFC527CF81D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0160B2CD-87D8-49FB-91AD-47EADE0574FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0160B2CD-87D8-49FB-91AD-47EADE0574FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0160B2CD-87D8-49FB-91AD-47EADE0574FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0160B2CD-87D8-49FB-91AD-47EADE0574FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5D19EB5-1BAE-4551-910D-3794C9074823}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5D19EB5-1BAE-4551-910D-3794C9074823}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5D19EB5-1BAE-4551-910D-3794C9074823}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5D19EB5-1BAE-4551-910D-3794C9074823}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,6 @@
 ﻿using Aspor.EF;
 using Aspor.EF.Extensions;
+using Aspor.Streaming.Core.Attributes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Deltas;
 using Microsoft.AspNetCore.OData.Query;
@@ -36,10 +37,10 @@ namespace Test.Controllers.Api
 
         [HttpPost]
         [EnableQuery]
+        //[StreamTopic("user.create")]
         public async Task<IActionResult> PostProject([FromBody] Project project)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            project.Name = "Test";
             return await PostEntityAsync(project);
         }
 
