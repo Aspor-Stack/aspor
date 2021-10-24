@@ -1,4 +1,4 @@
-﻿namespace Streaming
+﻿namespace Aspor.Streaming
 {
     public enum StreamMode
     {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Streaming;
+using Aspor.Streaming;
 
 namespace Aspor.Streaming
 {
