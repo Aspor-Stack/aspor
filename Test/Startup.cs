@@ -1,16 +1,15 @@
 using Aspor.Common.Extensions;
+using Aspor.Export.Extensions;
 using Aspor.Streaming;
 using Aspor.Streaming.Core.Extensions;
 using Aspor.Validation.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.OData;
-using Microsoft.AspNetCore.OData.Batch;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Streaming;
 using Test.Api;
 using Test.Model;
 
@@ -44,6 +43,7 @@ namespace Test
                   .AddAsporODataPageSize()
                   .AddAsporReturnPreference()
                   .AddAsporETagAutoMatch()
+                  .AddAsporExport()
                   .AddOData(options =>
                   {
                       options.EnableQueryFeatures(1000);

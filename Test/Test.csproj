@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EF\EF.csproj" />
+    <ProjectReference Include="..\Export\Export.csproj" />
     <ProjectReference Include="..\Streaming\Streaming.csproj" />
   </ItemGroup>
 

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.OData.Deltas;
 using Microsoft.AspNetCore.OData.Results;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -61,7 +62,7 @@ namespace Aspor.EF
             _dbContext.Add(entity);
             await _dbContext.SaveChangesAsync();
 
-            return Created(entity);
+            return Ok(entity);
         }
 
         protected async Task<IActionResult> PatchEntityAsync<TEntity>(Delta<TEntity> delta, IQueryable<TEntity> queryable) where TEntity : class
