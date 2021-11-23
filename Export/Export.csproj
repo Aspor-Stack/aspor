@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+	<TargetFramework>net6.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Aspor.Export</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Davide Wietlisbach</Authors>
   </PropertyGroup>
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="ClosedXML" Version="0.95.4" />
-    <PackageReference Include="Microsoft.AspNetCore.OData" Version="8.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.OData" Version="8.0.4" />
   </ItemGroup>
 
 </Project>
