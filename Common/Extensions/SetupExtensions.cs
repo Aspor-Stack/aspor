@@ -1,5 +1,9 @@
 ﻿using Microsoft.AspNetCore.OData.Batch;
+using Microsoft.AspNetCore.OData.Query.Validator;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.OData.Edm;
+using System.Collections.Generic;
 
 namespace Aspor.Common.Extensions
 {
@@ -40,6 +44,17 @@ namespace Aspor.Common.Extensions
             return mvc;
         }
 
+        public static IServiceCollection AddVirtualSelectExpandValidator(this IServiceCollection collection)
+        {
+            collection.Replace(new ServiceDescriptor(typeof(SelectExpandQueryValidator), (services) =>
+            {
+                var model = services.GetRequiredService<IEdmModel>();
+                IDictionary<IEdmStructuredType, string[]> properties = model.GetVirtualNavigations();
+                if (properties != null) return new VirtualSelectExpandQueryValidator(model.GetVirtualNavigations());
+                else return new SelectExpandQueryValidator();
+            }, ServiceLifetime.Singleton));
+            return collection;
+        }
     }
 
 }
