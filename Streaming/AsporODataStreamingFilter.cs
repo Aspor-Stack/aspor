@@ -37,6 +37,7 @@ namespace Aspor.Streaming
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
             ActionExecutedContext executedContext = await next();
+            if (executedContext.Canceled) return;
 
             string method = context.HttpContext.Request.Method;
             if(method.Equals("POST") || method.Equals("PATCH") || method.Equals("PUT") || method.Equals("DELETE"))
@@ -72,7 +73,7 @@ namespace Aspor.Streaming
         private object GetContent(IActionResult result)
         {
             if (result is ObjectResult) return ((ObjectResult)result).Value;
-            else if (result.GetType().IsGenericType)
+            else if (result != null && result.GetType().IsGenericType)
             {
                 Type type = result.GetType().GetGenericTypeDefinition();
                 if (type == typeof(CreatedODataResult<>) || type == typeof(UpdatedODataResult<>))
