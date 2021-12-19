@@ -9,7 +9,7 @@ namespace Aspor.Validation.Definition
     public class ValidationPropertyDefinition
     {
 
-        public ValidationPropertyDefinition(string name, MethodInfo? instanceGetMethod, List<object> validators)
+        public ValidationPropertyDefinition(string name, MethodInfo instanceGetMethod, List<object> validators)
         {
             Name = name;
             InstanceGetMethod = instanceGetMethod;
@@ -22,7 +22,7 @@ namespace Aspor.Validation.Definition
 
         public List<object> Validators { get; }
 
-        public void Validate(ModelStateDictionary state, ValidationAction action, object? value)
+        public void Validate(ModelStateDictionary state, ValidationAction action, object value)
         {
             foreach (object validator in Validators)
             {

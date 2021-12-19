@@ -29,6 +29,7 @@ namespace Aspor.Validation.Extensions
 
         public static bool ValidateRules(this HttpContext context, object instance)
         {
+            if (instance == null) return false;
             ModelStateDictionary state = context.Items["modelState"] as ModelStateDictionary;
             AsporValidator.ValidateRules(context.RequestServices, state, instance);
             return true;
@@ -36,8 +37,9 @@ namespace Aspor.Validation.Extensions
 
         public async static Task<bool> ValidateRulesAsync(this HttpContext context, object instance)
         {
+            if (instance == null) return false;
             ModelStateDictionary state = context.Items["modelState"] as ModelStateDictionary;
-            AsporValidator.ValidateRules(context.RequestServices, state, instance);
+            await AsporValidator.ValidateRulesAsync(context.RequestServices, state, instance);
             return true;
         }
     }

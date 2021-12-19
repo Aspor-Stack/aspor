@@ -27,6 +27,8 @@ namespace Aspor.Validation
         {
             if (instance is IObjectRuleValidation) ((IObjectRuleValidation)instance).Validate(services, state);
             else if (instance is IAsyncObjectRuleValidation) ((IAsyncObjectRuleValidation)instance).Validate(services, state).Wait();
+            else if (instance is IRuleValidation) ((IRuleValidation)instance).Validate(services, state, instance);
+            else if (instance is IAsyncRuleValidation) ((IAsyncRuleValidation)instance).Validate(services, state, instance).Wait();
             ValidationDefinitionCache.Get(instance.GetType()).ValidateRules(services, state, instance);
         }
 
@@ -34,6 +36,8 @@ namespace Aspor.Validation
         {
             if (instance is IAsyncObjectRuleValidation) await ((IAsyncObjectRuleValidation)instance).Validate(services, state);
             else if (instance is IObjectRuleValidation) ((IObjectRuleValidation)instance).Validate(services, state);
+            else if (instance is IAsyncRuleValidation) await ((IAsyncRuleValidation)instance).Validate(services, state, instance);
+            else if (instance is IRuleValidation) ((IRuleValidation)instance).Validate(services, state, instance);
             ValidationDefinitionCache.Get(instance.GetType()).ValidateRules(services, state, instance);
         }
 

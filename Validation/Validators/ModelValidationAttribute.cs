@@ -6,7 +6,7 @@ namespace Aspor.Validation.Validators
     public abstract class ModelValidationAttribute : Attribute
     {
 
-        public abstract bool IsValid(ValidationAction action, object? input);
+        public abstract bool IsValid(ValidationAction action, object input);
 
         public abstract string FormatErrorMessage(string propertyName);
     }

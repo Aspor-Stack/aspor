@@ -21,7 +21,7 @@ namespace Aspor.Validation.Definition
 
         public IList<object> RuleValidations { get; }
 
-        public void ValidateProperty(ModelStateDictionary state, string propertyName, object? instance, ValidationAction action = ValidationAction.CREATE)
+        public void ValidateProperty(ModelStateDictionary state, string propertyName, object instance, ValidationAction action = ValidationAction.CREATE)
         {
             ValidationPropertyDefinition property = Properties.First(p => p.Name.Equals(propertyName, StringComparison.CurrentCultureIgnoreCase));
             var input = property.InstanceGetMethod.Invoke(instance, new object[0]);
@@ -48,7 +48,7 @@ namespace Aspor.Validation.Definition
             foreach (string propertyName in delta.GetChangedPropertyNames())
             {
                 ValidationPropertyDefinition property = Properties.First(p => p.Name.Equals(propertyName, StringComparison.CurrentCultureIgnoreCase));
-                object? input;
+                object input;
                 if (delta.TryGetPropertyValue(property.Name, out input))
                 {
                     property.Validate(state, action, input);
