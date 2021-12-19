@@ -14,7 +14,10 @@
       "launchBrowser": true,
       "launchUrl": "api",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "AUTH_KEY_URL": "https://auth.account.pretronic.net/v1/keys",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DATABASE": "server=deyna.ch;port=9877;user id=project-front-dev;password=JIjiCUpaROqaVOdaDAdeDI;database=project-front",
+        "AUTH_AUDIENCE": "https://auth.account.pretronic.net/59d71123-c884-11eb-8ba0-0242ac180002"
       }
     },
     "Test": {

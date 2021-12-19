@@ -6,7 +6,7 @@ using System;
 
 namespace Aspor.Authorization.Attributes
 {
-    public class ScopeRequirementAttribute : Attribute, IAuthorizationFilter
+    public class RequiredScopeAttribute : Attribute, IAuthorizationFilter
     {
 
         public static string SCOPE_PREFIX = null;
@@ -14,7 +14,7 @@ namespace Aspor.Authorization.Attributes
         private readonly string[] _scopes;
         private readonly UserType _type;
 
-        public ScopeRequirementAttribute(UserType type, string[] scopes)
+        public RequiredScopeAttribute(UserType type, string[] scopes)
         {
             _type = type;
             _scopes = scopes;

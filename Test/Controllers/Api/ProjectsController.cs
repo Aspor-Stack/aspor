@@ -1,6 +1,6 @@
 ﻿using Aspor.EF;
 using Aspor.EF.Extensions;
-using Aspor.Streaming.Core.Attributes;
+using Authorization.Permission;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Deltas;
 using Microsoft.AspNetCore.OData.Query;
@@ -21,6 +21,7 @@ namespace Test.Controllers.Api
 
         [HttpGet]
         [EnableQuery]
+        [RequiredPermission("project.read")]
         public IQueryable<Project> GetProjects()
         {
             return DbContext.Projects.Active();
@@ -28,6 +29,7 @@ namespace Test.Controllers.Api
 
         [HttpGet("{projectId}")]
         [EnableQuery]
+        [RequiredPermission("project.read")]
         public SingleResult<Project> GetProject([FromRoute] Guid projectId)
         {
             return SingleResult.Create(DbContext.Projects.Active().Where(p => p.Id == projectId));
@@ -37,15 +39,15 @@ namespace Test.Controllers.Api
 
         [HttpPost]
         [EnableQuery]
-        //[StreamTopic("user.create")]
+        [RequiredPermission("project.create")]
         public async Task<IActionResult> PostProject([FromBody] Project project)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
             return await PostEntityAsync(project);
         }
 
         [HttpPatch("{projectId}")]
         [EnableQuery]
+        [RequiredPermission("project.patch", "projectId")]
         public async Task<IActionResult> PatchProject([FromRoute] Guid projectId, [FromBody] Delta<Project> delta)
         {
             return await PatchEntityAsync(delta,DbContext.Projects.Active().Where(p => p.Id == projectId));

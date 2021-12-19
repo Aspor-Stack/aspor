@@ -18,7 +18,14 @@ namespace Test.Api
 
             });
 
-            return builder.GetEdmModel();
+            builder.EntitySet<Board>("boards").EntityType.Configure((user) =>
+            {
+
+            });
+
+            IEdmModel model = builder.GetEdmModel();
+            model.AddVirtualNavigation("boards", "projects", "xxx");
+            return model;
         }
 
     }

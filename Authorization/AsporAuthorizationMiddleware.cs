@@ -1,5 +1,4 @@
-﻿using Aspor.Authorization.Schema;
-using Aspor.Authorization.User;
+﻿using Aspor.Authorization.User;
 using Aspor.Authorization.User.Factory;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;

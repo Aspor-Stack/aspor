@@ -1,6 +1,7 @@
 ﻿using Aspor.EF;
 using Aspor.Validation.Validators;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -8,6 +9,7 @@ namespace Test.Model
 {
 
     [Table("projects")]
+    // [RequiredPermission(PermissionAction.READ)]
     public class Project : IEntityTimestamps, IEntityExecutors
     {
 
@@ -45,6 +47,9 @@ namespace Test.Model
 
         [OnlyServer]
         public Guid? DeletedBy { get; set; }
+
+        [InverseProperty("Project")]
+        public virtual IList<Board> Boards { get;set;}
 
     }
 }
