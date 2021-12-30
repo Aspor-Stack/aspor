@@ -1,7 +1,7 @@
 ﻿using Aspor.Authorization.User;
 using System.Threading.Tasks;
 
-namespace ProjectFrontApi.Policies
+namespace Authorization.Permission
 {
     public interface IPermissionVerifier
     {
