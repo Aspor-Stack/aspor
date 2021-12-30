@@ -65,8 +65,8 @@ namespace Aspor.Streaming
         private string GetPath(HttpContext context, IODataFeature odataFeature)
         {
             string result = context.Request.Path.Value.Substring(1).Replace(odataFeature.RoutePrefix+"/","").Replace("/", ".");
-            if (context.Request.Method.Equals("PATCH") || context.Request.Method.Equals("PUT")) result += "update";
-            else if (context.Request.Method.Equals("DELETE")) result += "delete";
+            if (context.Request.Method.Equals("PATCH") || context.Request.Method.Equals("PUT")) result += ".update";
+            else if (context.Request.Method.Equals("DELETE")) result += ".delete";
             return result;
         }
 
