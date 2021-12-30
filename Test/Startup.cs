@@ -51,7 +51,7 @@ namespace Test
 
             services.AddControllers()
                   .AddMvcOptions((options) => {
-                      options.Filters.Add(new AsporAuthorizationFilter());
+                 //     options.Filters.Add(new AsporAuthorizationFilter());
                   })
                   .AddAutoPreValidationCheck()
                   .AddAsporODataStreaming(StreamMode.AUTO)

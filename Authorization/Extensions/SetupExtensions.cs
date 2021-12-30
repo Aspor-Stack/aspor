@@ -1,11 +1,11 @@
-﻿using Authorization.Policy;
+﻿using Authorization.Permission;
+using Authorization.Policy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.OData;
 using Microsoft.AspNetCore.OData.Query.Expressions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OData.Edm;
-using ProjectFrontApi.Policies;
 
 namespace Aspor.Authorization.Extensions
 {
