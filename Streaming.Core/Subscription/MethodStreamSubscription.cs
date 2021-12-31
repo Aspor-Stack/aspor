@@ -63,7 +63,14 @@ namespace Aspor.Streaming.Core.Subscription
             foreach(ParameterInfo parameter in parameters)
             {
                 FromTopicAttribute topicAttribute = parameter.GetCustomAttribute<FromTopicAttribute>();
-                if(topicAttribute != null) result[index] = context.Parameters[topicAttribute.Name ?? parameter.Name];
+                if (topicAttribute != null)
+                {
+                    if (context.Parameters.TryGetValue((topicAttribute.Name ?? parameter.Name), out var value))
+                    {
+                        result[index] = value;
+                    }
+
+                }
 
                 FromContentAttribute bodyAttribute = parameter.GetCustomAttribute<FromContentAttribute>();
                 if (bodyAttribute != null) result[index] = content;

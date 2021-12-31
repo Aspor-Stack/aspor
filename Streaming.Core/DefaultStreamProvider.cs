@@ -119,11 +119,14 @@ namespace Aspor.Streaming.Core
 
             foreach (MethodInfo method in methods)
             {
-                StreamTopicAttribute topic = method.GetCustomAttribute<StreamTopicAttribute>();
-                string[] nodes = TopicMatcher.Compute(topic.Topic);
-                string[] normalizedNodes = TopicMatcher.Noramlize(nodes);
-                _subscriptions.Add(new MethodStreamSubscription(nodes, normalizedNodes, method, listener));
-                _bus.Subscribe(string.Join(TopicMatcher.NODE_DELIMITER, normalizedNodes));
+                IEnumerable<StreamTopicAttribute> topics = method.GetCustomAttributes<StreamTopicAttribute>();
+                foreach(StreamTopicAttribute topic in topics)
+                {
+                    string[] nodes = TopicMatcher.Compute(topic.Topic);
+                    string[] normalizedNodes = TopicMatcher.Noramlize(nodes);
+                    _subscriptions.Add(new MethodStreamSubscription(nodes, normalizedNodes, method, listener));
+                    _bus.Subscribe(string.Join(TopicMatcher.NODE_DELIMITER, normalizedNodes));
+                }
             }
         }
 
