@@ -32,6 +32,8 @@ namespace Aspor.Streaming.Core
 
         public void Consume(Type type);
 
+        public void Consume(object listener);
+
         public void AddConsumers();
 
     }

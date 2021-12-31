@@ -110,7 +110,7 @@ namespace Aspor.Streaming.Core
             Consume(Activator.CreateInstance(type));
         }
 
-        private void Consume(object listener)
+        public void Consume(object listener)
         {
             if (_bus == null) throw new InvalidOperationException("No bus available");
             IEnumerable<MethodInfo> methods = listener.GetType().GetMethods().Where(m => !m.IsStatic
