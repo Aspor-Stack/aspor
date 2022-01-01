@@ -67,7 +67,8 @@ namespace Aspor.Streaming.Core.Subscription
                 {
                     if (context.Parameters.TryGetValue((topicAttribute.Name ?? parameter.Name), out var value))
                     {
-                        result[index] = value;
+                        if(parameter.ParameterType == typeof(Guid)) result[index] = Guid.Parse(value);
+                        else result[index] = value;
                     }
 
                 }
