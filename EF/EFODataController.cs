@@ -41,11 +41,10 @@ namespace Aspor.EF
             return SingleResult.Create(queryable);
         }
 
-        protected async Task<IActionResult> PostEntityAsync<TEntity>(TEntity entity) where TEntity : class
+        protected async Task<IActionResult> PostEntityAsync<TEntity>(TEntity entity, Action<TEntity> postAction = null) where TEntity : class
         {
             await HttpContext.ValidateRulesAsync(entity);
             if (!ModelState.IsValid) return BadRequest(ModelState);
-
 
             if (entity is IEntityExecutors executorEntity)
             {
@@ -60,12 +59,13 @@ namespace Aspor.EF
             }
 
             _dbContext.Add(entity);
+            if(postAction != null) postAction.Invoke(entity);
             await _dbContext.SaveChangesAsync();
 
             return Ok(entity);
         }
 
-        protected async Task<IActionResult> PatchEntityAsync<TEntity>(Delta<TEntity> delta, IQueryable<TEntity> queryable) where TEntity : class
+        protected async Task<IActionResult> PatchEntityAsync<TEntity>(Delta<TEntity> delta, IQueryable<TEntity> queryable, Action<TEntity> postAction = null) where TEntity : class
         {
             if (HttpContext.IFMatch(queryable as IQueryable<object>)) return StatusCode(StatusCodes.Status412PreconditionFailed);
 
@@ -84,12 +84,13 @@ namespace Aspor.EF
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             _dbContext.Update(entity);
+            if (postAction != null) postAction.Invoke(entity);
             await _dbContext.SaveChangesAsync();
 
             return Updated(entity);
         }
 
-        protected async Task<IActionResult> PutEntityAsync<TEntity>(Delta<TEntity> delta, IQueryable<TEntity> queryable) where TEntity : class
+        protected async Task<IActionResult> PutEntityAsync<TEntity>(Delta<TEntity> delta, IQueryable<TEntity> queryable, Action<TEntity> postAction = null) where TEntity : class
         {
             if (HttpContext.IFMatch(queryable as IQueryable<object>)) return StatusCode(StatusCodes.Status412PreconditionFailed);
 
@@ -108,12 +109,13 @@ namespace Aspor.EF
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             _dbContext.Update(entity);
+            if (postAction != null) postAction.Invoke(entity);
             await _dbContext.SaveChangesAsync();
 
             return Updated(entity);
         }
 
-        protected async Task<IActionResult> DeleteEntityAsync<TEntity>(IQueryable<TEntity> queryable) where TEntity : class
+        protected async Task<IActionResult> DeleteEntityAsync<TEntity>(IQueryable<TEntity> queryable, Action<TEntity> postAction = null) where TEntity : class
         {
             if (HttpContext.IFMatch(queryable as IQueryable<object>)) return StatusCode(StatusCodes.Status412PreconditionFailed);
             TEntity entity = await queryable.SingleAsync();
@@ -126,6 +128,7 @@ namespace Aspor.EF
             }
 
             _dbContext.Remove(entity);
+            if (postAction != null) postAction.Invoke(entity);
             await _dbContext.SaveChangesAsync();
 
             return Ok(entity);
