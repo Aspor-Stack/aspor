@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using System.Reflection;
 
 namespace Aspor.Validation.Definition
@@ -21,7 +22,7 @@ namespace Aspor.Validation.Definition
                 else if (attribute is IRuleValidation) ruleValidations.Add((IRuleValidation)attribute);
             }
 
-            foreach (PropertyInfo property in type.GetProperties())
+            foreach (PropertyInfo property in type.GetProperties().Where(p => p.GetIndexParameters().Length == 0))
             {
                 List<object> validators = new List<object>();
                 foreach (Attribute attribute in property.GetCustomAttributes())
