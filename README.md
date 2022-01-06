@@ -16,4 +16,4 @@ Aspor-Stack | .Net modules
 
 <br />
 
-![Aspor Architecture](https://raw.githubusercontent.com/Aspor-Stack/aspor-docs/master/static/images/aspor-architecturepng.png?token=AHBAJW77JEEAUAWEZ7O3FZLB22Z2U)
+![Aspor Architecture](https://raw.githubusercontent.com/Aspor-Stack/aspor-docs/master/static/images/aspor-architecturepng.png)
