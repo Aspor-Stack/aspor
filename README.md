@@ -1,9 +1,11 @@
 
+<br />
 <h4 align="center">    
 
 Aspor-Stack | .Net modules
 
 </h4>
+<br />
 
 ---
 [![CI](https://github.com/Aspor-Stack/aspor/actions/workflows/publish.yml/badge.svg)](https://github.com/Aspor-Stack/aspor/actions/workflows/publish.yml)
@@ -16,4 +18,15 @@ Aspor-Stack | .Net modules
 
 <br />
 
-![Aspor Architecture](https://raw.githubusercontent.com/Aspor-Stack/aspor-docs/master/static/images/aspor-architecturepng.png)
+![Aspor Architecture](https://raw.githubusercontent.com/Aspor-Stack/aspor-docs/master/static/images/aspor-architecturepng.png?token=AHBAJWZ4636ZRZ6TDC6M5ATB2224E)
+
+---
+
+- [Project details](#project-details)
+- [Ecosystem](#ecosystem)
+
+## Project details
+Aspor is in a very early stage and still under development.
+
+
+## Ecosystem
