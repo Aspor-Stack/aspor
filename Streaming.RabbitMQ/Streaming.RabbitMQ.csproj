@@ -1,19 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-	<TargetFramework>net6.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageId>Aspor.Streaming.RabbitMQ</PackageId>
-    <Version>1.0.2</Version>
-    <Authors>Davide Wietlisbach</Authors>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageId>Aspor.Streaming.RabbitMQ</PackageId>
+		<Version>1.0.3</Version>
+		<Authors>Davide Wietlisbach</Authors>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<Description>.Net core RabbitMQ streaming module of the aspor project. Aspor is a comprehensive web stack for building fast, modern and reilable web applications (SPA / PWA). The concept is based on a decoupled architecture with an independent OData interface running on an Asp .net service that is consumed by the React frontend application. Backend services are seperated with a Microservice architecture and connected together with Aspor streaming.</Description>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
-  </ItemGroup> 
+	<ItemGroup>
+		<None Include="..\README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Streaming.Core\Streaming.Core.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Streaming.Core\Streaming.Core.csproj" />
+	</ItemGroup>
 
 </Project>

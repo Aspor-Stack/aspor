@@ -1,17 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-	<TargetFramework>net6.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageId>Aspor.Common</PackageId>
-    <Version>1.0.6</Version>
-    <Authors>Davide Wietlisbach</Authors>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance> 
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageId>Aspor.Common</PackageId>
+		<Version>1.0.7</Version>
+		<RepositoryUrl>https://github.com/Aspor-Stack/aspor</RepositoryUrl>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<Description>Asp .Net common module of the aspor project. Aspor is a comprehensive web stack for building fast, modern and reilable web applications (SPA / PWA). The concept is based on a decoupled architecture with an independent OData interface running on an Asp .net service that is consumed by the React frontend application. Backend services are seperated with a Microservice architecture and connected together with Aspor streaming.</Description>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.OData" Version="8.0.4" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+		<PackageReference Include="Microsoft.AspNetCore.OData" Version="8.0.4" />
+	</ItemGroup>
 
 </Project>
