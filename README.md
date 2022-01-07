@@ -43,7 +43,7 @@ Aspor is still in its early days and any contribution would help to grow this pr
 The project is divided into two main parts, each part can be used independently. 
 
 * [.Net modules](https://github.com/Aspor-Stack/aspor)
-* [React library](https://github.com/Aspor-Stack/aspor-react)
+* [React client](https://github.com/Aspor-Stack/aspor-react)
 
 
 ## License
