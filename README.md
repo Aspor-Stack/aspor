@@ -15,7 +15,7 @@ Aspor-Stack | .Net modules
 
 <br />
 
-> Aspor is a comprehensive web stack for building fast, modern and reilable web applications (SPA / PWA). The concept is based on a decoupled architecture with an 
+> Aspor is a comprehensive web stack for building fast, modern and reliable web applications (SPA / PWA). The concept is based on a decoupled architecture with an 
 > independent OData interface running on an Asp .net service that is consumed by the React frontend application. 
 > Backend services are seperated with a Microservice architecture and connected together with Aspor streaming.
 
