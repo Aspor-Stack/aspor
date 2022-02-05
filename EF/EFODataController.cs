@@ -133,5 +133,13 @@ namespace Aspor.EF
 
             return Ok(entity);
         }
+
+        [NonAction]
+        public virtual BadRequestObjectResult BadRequest(string key, string errorMessage)
+        {
+            ModelState.AddModelError(key, errorMessage);
+            return BadRequest(ModelState);
+        }
+
     }
 }
