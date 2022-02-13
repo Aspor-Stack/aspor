@@ -25,7 +25,7 @@ namespace Aspor.Authorization
 
                 if (user == null)
                 {
-                    context.Response.StatusCode = 400;
+                    context.Response.StatusCode = 401;
                     await context.Response.WriteAsync("Invalid authorization format");
                     return;
                 }

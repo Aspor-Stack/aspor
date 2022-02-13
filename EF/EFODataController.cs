@@ -72,6 +72,7 @@ namespace Aspor.EF
             TEntity entity = await queryable.SingleAsync();
             if (entity == null) return NotFound();
 
+            if (postAction != null) postAction.Invoke(entity);
             delta.Patch(entity);
 
             if (entity is IEntityExecutors executorEntity)
@@ -84,7 +85,6 @@ namespace Aspor.EF
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             _dbContext.Update(entity);
-            if (postAction != null) postAction.Invoke(entity);
             await _dbContext.SaveChangesAsync();
 
             return Updated(entity);
@@ -97,6 +97,7 @@ namespace Aspor.EF
             TEntity entity = await queryable.SingleAsync();
             if (entity == null) return NotFound();
 
+            if (postAction != null) postAction.Invoke(entity);
             delta.Put(entity);
 
             if (entity is IEntityExecutors executorEntity)
@@ -109,7 +110,6 @@ namespace Aspor.EF
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             _dbContext.Update(entity);
-            if (postAction != null) postAction.Invoke(entity);
             await _dbContext.SaveChangesAsync();
 
             return Updated(entity);
