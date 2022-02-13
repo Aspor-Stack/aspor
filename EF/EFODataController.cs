@@ -52,7 +52,13 @@ namespace Aspor.EF
                 if (user != null) executorEntity.CreatedBy = executorEntity.ModifiedBy = user.Id;
             }
 
-            if(entity is IEntityTenancy entityTenancy)
+            if (entity is IEntityTimestamps timestampEntity)
+            {
+                timestampEntity.CreatedOn = DateTime.Now;
+                timestampEntity.ModifiedOn = DateTime.Now;
+            }
+
+            if (entity is IEntityTenancy entityTenancy)
             {
                 AsporUser user = HttpContext.GetUserOrDefault();
                 if (user != null) entityTenancy.TenantId = user.TenantId;
@@ -81,6 +87,8 @@ namespace Aspor.EF
                 if (user != null) executorEntity.ModifiedBy = user.Id;
             }
 
+            if (entity is IEntityTimestamps timestampEntity) timestampEntity.ModifiedOn = DateTime.Now;
+
             await HttpContext.ValidateRulesAsync(entity);
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -106,6 +114,8 @@ namespace Aspor.EF
                 if (user != null) executorEntity.ModifiedBy = user.Id;
             }
 
+            if (entity is IEntityTimestamps timestampEntity) timestampEntity.ModifiedOn = DateTime.Now;
+
             await HttpContext.ValidateRulesAsync(entity);
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -127,8 +137,18 @@ namespace Aspor.EF
                 if (user != null) executorEntity.DeletedBy = user.Id;
             }
 
-            _dbContext.Remove(entity);
             if (postAction != null) postAction.Invoke(entity);
+
+            if (entity is IEntityTimestamps timestampEntity)
+            {
+                timestampEntity.DeletedOn = DateTime.Now;
+                _dbContext.Update(entity);
+            }
+            else
+            {
+                _dbContext.Remove(entity);
+
+            }
             await _dbContext.SaveChangesAsync();
 
             return Ok(entity);
