@@ -3,7 +3,6 @@ using Aspor.Authorization.User;
 using Authorization.Policy;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.OData.Query;
-using Microsoft.AspNetCore.OData.Query.Expressions;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -17,17 +16,21 @@ namespace Microsoft.AspNetCore.OData
         private static readonly PropertyInfo PROPERTY =  typeof(ODataQueryContext).GetProperty("Request", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 
         private readonly QueryPolicyContext _policy;
-        private readonly SelectExpandBinderContext _context;
+        // private readonly SelectExpandBinderContext _context;
 
-        public PolicyQueryVisitor(QueryPolicyContext policy, SelectExpandBinderContext context)
+        /*
+         * public PolicyQueryVisitor(QueryPolicyContext policy, SelectExpandBinderContext context)
         {
             _policy = policy;
             _context = context;
         }
+         * 
+         */
 
         public AsporUser GetUser()
         {
-             return ((HttpRequest)PROPERTY.GetValue(_context.SelectExpand.Context)).HttpContext.GetUser();
+            return null;
+         //    return ((HttpRequest)PROPERTY.GetValue(_context.SelectExpand.Context)).HttpContext.GetUser();
         }
 
         protected override Expression VisitMethodCall(MethodCallExpression node)
