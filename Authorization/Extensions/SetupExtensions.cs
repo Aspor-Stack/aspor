@@ -32,7 +32,7 @@ namespace Aspor.Authorization.Extensions
 
         public static IServiceCollection AddPolicyBinder(this IServiceCollection collection, QueryPolicyContext context)
         {
-            collection.Replace(new ServiceDescriptor(typeof(ISelectExpandBinder), (obj)=> new PolicySelectExpandBinder(context), ServiceLifetime.Singleton));
+            //collection.Replace(new ServiceDescriptor(typeof(ISelectExpandBinder), (obj)=> new PolicySelectExpandBinder(context), ServiceLifetime.Singleton));
             return collection;
         }
 
