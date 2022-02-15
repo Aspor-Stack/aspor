@@ -13,7 +13,7 @@ namespace Aspor.EF.Extensions
         {
             if (entity is IEntityTimestamps entityTimes)
             {
-                entityTimes.DeletedOn = DateTime.UtcNow;
+                entityTimes.DeletedOn = DateTime.Now;
             }
             return context.Remove(entity);
         }
@@ -22,7 +22,7 @@ namespace Aspor.EF.Extensions
         {
             if (entity is IEntityTimestamps entityTimes)
             {
-                entityTimes.DeletedOn = DateTime.UtcNow;
+                entityTimes.DeletedOn = DateTime.Now;
             }
             return context.Remove<TEntity>(entity);
         }
@@ -33,7 +33,7 @@ namespace Aspor.EF.Extensions
             {
                 if (entity is IEntityTimestamps entityTimes)
                 {
-                    entityTimes.DeletedOn = DateTime.UtcNow;
+                    entityTimes.DeletedOn = DateTime.Now;
                 }
             }
             context.RemoveRange(entities);
@@ -45,7 +45,7 @@ namespace Aspor.EF.Extensions
             {
                 if (entity is IEntityTimestamps entityTimes)
                 {
-                    entityTimes.DeletedOn = DateTime.UtcNow;
+                    entityTimes.DeletedOn = DateTime.Now;
                 }
             }
             context.RemoveRange(entities);

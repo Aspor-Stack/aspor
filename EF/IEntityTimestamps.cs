@@ -21,18 +21,18 @@ namespace Aspor.EF
                     case EntityState.Deleted:
                         if (entity.DeletedOn == null)
                         {
-                            entity.DeletedOn = DateTime.UtcNow;
+                            entity.DeletedOn = DateTime.Now;
                             e.Entry.State = EntityState.Modified;
                         }
                         break;
                     case EntityState.Modified:
                         if (entity.DeletedOn != null)
                         {
-                            entity.ModifiedOn = DateTime.UtcNow;
+                            entity.ModifiedOn = DateTime.Now;
                         }
                         break;
                     case EntityState.Added:
-                        entity.CreatedOn = DateTime.UtcNow;
+                        entity.CreatedOn = DateTime.Now;
                         entity.ModifiedOn = entity.CreatedOn;
                         break;
                 }
