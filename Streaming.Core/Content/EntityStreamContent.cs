@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +7,11 @@ namespace Aspor.Streaming.Core.Content
 {
     public class EntityStreamContent<E> : IStreamContent where E : class
     {
+
+        private static JsonSerializer SERIALIZER = new JsonSerializer
+        {
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+        };
 
         public EntityStreamContent() {}
 
@@ -28,7 +34,7 @@ namespace Aspor.Streaming.Core.Content
         public byte[] Encode()
         {
             JObject raw = new JObject();
-            raw["instance"] = JObject.FromObject(Instance);
+            raw["instance"] = JObject.FromObject(Instance, SERIALIZER);
             raw["affectedProperties"] = JArray.FromObject(AffectedProperties);
             return Encoding.UTF8.GetBytes(JToken.FromObject(raw).ToString());
         }
