@@ -4,7 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageId>Aspor.Validation</PackageId>
-		<Version>1.0.6</Version>
+		<Version>1.0.7</Version>
 		<Authors>Davide Wietlisbach</Authors>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>

@@ -8,5 +8,7 @@ namespace Test.Model
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) {}
 
         public DbSet<Project> Projects { get; set; }
+
+        public DbSet<Board> Boards { get; set; }
     }
 }

@@ -4,7 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageId>Aspor.Export</PackageId>
-		<Version>1.0.4</Version>
+		<Version>1.0.6</Version>
 		<Authors>Davide Wietlisbach</Authors>
 		<RepositoryUrl>https://github.com/Aspor-Stack/aspor</RepositoryUrl>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -14,11 +14,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="..\README.md" Pack="true" PackagePath="\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+		<None Include="..\README.md" Link="README.md">
+		  <PackagePath>\</PackagePath>
+		  <Pack>true</Pack>
+		</None>
 		<PackageReference Include="ClosedXML" Version="0.95.4" />
 		<PackageReference Include="Microsoft.AspNetCore.OData" Version="8.0.7" />
 	</ItemGroup>

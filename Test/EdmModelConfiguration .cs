@@ -24,7 +24,7 @@ namespace Test.Api
             });
 
             IEdmModel model = builder.GetEdmModel();
-            model.AddVirtualNavigation("boards", "projects", "xxx");
+          //  model.AddVirtualNavigation("boards", "projects", "xxx");
             return model;
         }
 

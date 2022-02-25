@@ -24,7 +24,17 @@ namespace Aspor.Export.Formats
             return "xlsx";
         }
 
-        public void WriteField(object? value)
+        public int GetFieldPosition()
+        {
+            return _column- 1;
+        }
+
+        public void SkipFields(int count)
+        {
+            for (int i = 0; i < count; i++) WriteField("");
+        }
+
+        public void WriteField(object value)
         {
             _worksheet.Cell(_row, _column).Value = value != null ? value.ToString() : "";
             _column++;

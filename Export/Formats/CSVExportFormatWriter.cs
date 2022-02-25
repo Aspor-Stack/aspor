@@ -6,12 +6,12 @@ namespace Aspor.Export.Formats
     {
 
         private readonly StringBuilder _builder;
-        private bool _first;
+        private int _position;
 
         public CSVExportFormatWriter()
         {
             _builder = new StringBuilder();
-            _first = true;
+            _position = 0;
         }
 
         public string GetDefaultEnding()
@@ -19,17 +19,27 @@ namespace Aspor.Export.Formats
             return "csv";
         }
 
+        public int GetFieldPosition()
+        {
+            return _position;
+        }
+
+        public void SkipFields(int count)
+        {
+            for (int i = 0; i < count; i++) WriteField("");
+        }
+
         public void WriteField(object? value)
         {
-            if (_first) _first = false;
-            else _builder.Append(';');
+            if(_position > 0) _builder.Append(';');
             if (value != null) _builder.Append(value);
+            _position++;
         }
 
         public void NextLine()
         {
             _builder.Append('\n');
-            _first = true;
+            _position = 0;
         }
 
         public byte[] ToByteArray()

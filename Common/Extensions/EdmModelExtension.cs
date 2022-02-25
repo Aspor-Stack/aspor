@@ -16,7 +16,7 @@ namespace Aspor.Common.Extensions
             else return null;
         }
 
-        public static IEdmModel AddVirtualNavigation(this IEdmModel model, string sourceSet, string targetSet, string name) 
+        public static IEdmModel AddVirtualSetNavigation(this IEdmModel model, string sourceSet, string targetSet, string name) 
         {
             var source = (EdmEntitySet)model.FindDeclaredEntitySet(sourceSet);
             var target = (EdmEntitySet)model.FindDeclaredEntitySet(targetSet);

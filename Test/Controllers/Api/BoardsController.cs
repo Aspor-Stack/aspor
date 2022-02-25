@@ -13,18 +13,18 @@ using Test.Model;
 namespace Test.Controllers.Api
 {
 
-    [Route("api/projects")]
-    public class ProjectsController : EFODataController<DatabaseContext>
+    [Route("api/boards")]
+    public class BoardsController : EFODataController<DatabaseContext>
     {
 
-        public ProjectsController(DatabaseContext database) : base(database) {}
+        public BoardsController(DatabaseContext database) : base(database) {}
 
         [HttpGet]
         [EnableQuery]
        // [RequiredPermission("project.read")]
-        public IQueryable<Project> GetProjects()
+        public IQueryable<Board> GetBoards()
         {
-            return DbContext.Projects.Active();
+            return DbContext.Boards;
         }
 
         [HttpGet("{projectId}")]

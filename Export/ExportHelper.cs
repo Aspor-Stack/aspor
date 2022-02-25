@@ -76,42 +76,58 @@ namespace Aspor.Export
         private static void WriteRow(IExportFormatWriter writer, IEdmModel model, IEdmType type, SelectExpandClause clause, object row)
         {
             if (row is ISelectExpandWrapper) row = ((ISelectExpandWrapper)row).ToDictionary();
-            
-            if (clause == null || clause.AllSelected)
+
+            if (type is IEdmCollectionType collectionType)
             {
-                if (type is IEdmStructuredType)
+                bool first = true;
+                int position = writer.GetFieldPosition();
+                foreach(var item in (IEnumerable)row)
                 {
-                    WriteEdmStructuredTypeRow(writer, model, (IEdmStructuredType)type, row);
+                    if (first) first = false;
+                    else
+                    {
+                        writer.NextLine();
+                        writer.SkipFields(position);
+                    }
+                    WriteRow(writer,model,collectionType.ElementType.Definition, clause, item);
                 }
             }
-
-            if (clause != null && clause.SelectedItems != null)
+            else
             {
-                IDictionary dictionary = row as IDictionary;
-                foreach (SelectItem item in clause.SelectedItems)
+                if (clause == null || clause.AllSelected)
                 {
-                    if (item is PathSelectItem && row is IDictionary)
+                    if (type is IEdmStructuredType)
                     {
-                        foreach (PropertySegment segment in ((PathSelectItem)item).SelectedPath)
+                        WriteEdmStructuredTypeRow(writer, model, (IEdmStructuredType)type, row);
+                    }
+                }
+
+                if (clause != null && clause.SelectedItems != null)
+                {
+                    IDictionary dictionary = row as IDictionary;
+                    foreach (SelectItem item in clause.SelectedItems)
+                    {
+                        if (item is PathSelectItem && row is IDictionary)
                         {
-                            writer.WriteField(dictionary[segment.Property.Name]);
+                            foreach (PropertySegment segment in ((PathSelectItem)item).SelectedPath)
+                            {
+                                writer.WriteField(dictionary[segment.Property.Name]);
+                            }
+                        }
+                    }
+
+                    foreach (SelectItem item in clause.SelectedItems)
+                    {
+                        ExpandedNavigationSelectItem navigationItem = item as ExpandedNavigationSelectItem;
+                        if (navigationItem != null)
+                        {
+                            SelectExpandClause subClause = navigationItem.SelectAndExpand;
+                            string name = navigationItem.PathToNavigationProperty.FirstSegment.Identifier;
+                            var newRow = dictionary[name];
+                            WriteRow(writer, model, navigationItem.PathToNavigationProperty.FirstSegment.EdmType, subClause, newRow);
                         }
                     }
                 }
-
-                foreach (SelectItem item in clause.SelectedItems)
-                {
-                    ExpandedNavigationSelectItem navigationItem = item as ExpandedNavigationSelectItem;
-                    if (navigationItem != null)
-                    {
-                        SelectExpandClause subClause = navigationItem.SelectAndExpand;
-                        string name = navigationItem.PathToNavigationProperty.FirstSegment.Identifier;
-                        var newRow = dictionary[name];
-                        WriteRow(writer, model, navigationItem.PathToNavigationProperty.FirstSegment.EdmType, subClause, newRow);
-                    }
-                }
-
-
             }
         }
 
