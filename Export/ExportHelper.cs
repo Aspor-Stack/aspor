@@ -23,7 +23,7 @@ namespace Aspor.Export
 
         private static void WriteHead(IExportFormatWriter writer, IEdmModel model, IEdmType type, SelectExpandClause clause, string prefix = "")
         {
-
+            if (type is IEdmCollectionType collectionType) type = collectionType.ElementType.Definition;
             if (clause == null || clause.AllSelected)
             {
                 if (type is IEdmStructuredType)
@@ -76,6 +76,7 @@ namespace Aspor.Export
         private static void WriteRow(IExportFormatWriter writer, IEdmModel model, IEdmType type, SelectExpandClause clause, object row)
         {
             if (row is ISelectExpandWrapper) row = ((ISelectExpandWrapper)row).ToDictionary();
+            
             if (clause == null || clause.AllSelected)
             {
                 if (type is IEdmStructuredType)
@@ -83,7 +84,8 @@ namespace Aspor.Export
                     WriteEdmStructuredTypeRow(writer, model, (IEdmStructuredType)type, row);
                 }
             }
-            else
+
+            if (clause != null && clause.SelectedItems != null)
             {
                 IDictionary dictionary = row as IDictionary;
                 foreach (SelectItem item in clause.SelectedItems)
