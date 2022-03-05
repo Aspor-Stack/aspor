@@ -75,7 +75,7 @@ namespace Aspor.EF
         {
             if (HttpContext.IFMatch(queryable as IQueryable<object>)) return StatusCode(StatusCodes.Status412PreconditionFailed);
 
-            TEntity entity = await queryable.SingleAsync();
+            TEntity entity = await queryable.SingleOrDefaultAsync();
             if (entity == null) return NotFound();
 
             if (postAction != null) postAction.Invoke(entity);
@@ -102,7 +102,7 @@ namespace Aspor.EF
         {
             if (HttpContext.IFMatch(queryable as IQueryable<object>)) return StatusCode(StatusCodes.Status412PreconditionFailed);
 
-            TEntity entity = await queryable.SingleAsync();
+            TEntity entity = await queryable.SingleOrDefaultAsync();
             if (entity == null) return NotFound();
 
             if (postAction != null) postAction.Invoke(entity);
@@ -128,7 +128,7 @@ namespace Aspor.EF
         protected async Task<IActionResult> DeleteEntityAsync<TEntity>(IQueryable<TEntity> queryable, Action<TEntity> postAction = null) where TEntity : class
         {
             if (HttpContext.IFMatch(queryable as IQueryable<object>)) return StatusCode(StatusCodes.Status412PreconditionFailed);
-            TEntity entity = await queryable.SingleAsync();
+            TEntity entity = await queryable.SingleOrDefaultAsync();
             if (entity == null) return NotFound();
 
             if (entity is IEntityExecutors executorEntity)
