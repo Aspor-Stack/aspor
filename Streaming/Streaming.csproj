@@ -4,8 +4,8 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageId>Aspor.Streaming</PackageId>
-		<Version>1.0.7</Version>
-		<Authors>Davide Wietlisbach</Authors>
+		<Version>1.0.9</Version>
+		<Authors>Aspor-Stack</Authors>
 		<RepositoryUrl>https://github.com/Aspor-Stack/aspor</RepositoryUrl>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>

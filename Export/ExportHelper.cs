@@ -137,7 +137,10 @@ namespace Aspor.Export
             {
                 if (property.PropertyKind == EdmPropertyKind.Structural)
                 {
-                    if (row is IDictionary)
+                    if(row == null) 
+                    {
+                        writer.WriteField("");
+                    }else if (row is IDictionary)
                     {
                         writer.WriteField(((IDictionary)row)[property.Name]);
                     }
