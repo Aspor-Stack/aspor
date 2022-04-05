@@ -4,7 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageId>Aspor.EF</PackageId>
-		<Version>1.0.14</Version>
+		<Version>1.0.15</Version>
 		<Authors>Aspor-Stack</Authors>
 		<RepositoryUrl>https://github.com/Aspor-Stack/aspor</RepositoryUrl>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -24,9 +24,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Authorization\Authorization.csproj" />
-		<ProjectReference Include="..\Common\Common.csproj" />
-		<ProjectReference Include="..\Validation\Validation.csproj" />
+		<ProjectReference Include="..\Aspor.Authorization\Aspor.Authorization.csproj" />
+		<ProjectReference Include="..\Aspor.Common\Aspor.Common.csproj" />
+		<ProjectReference Include="..\Aspor.Validation\Aspor.Validation.csproj" />
 	</ItemGroup>
 
 </Project>

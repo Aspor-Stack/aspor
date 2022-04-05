@@ -29,48 +29,48 @@ jobs:
       - name: Publish Common
         uses: rohith/publish-nuget@v2
         with:
-          PROJECT_FILE_PATH: Common/Common.csproj
+          PROJECT_FILE_PATH: Aspor.Common/Aspor.Common.csproj
           PACKAGE_NAME: Aspor.Common
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
       - name: Publish Validation
         uses: rohith/publish-nuget@v2
         with:
-          PROJECT_FILE_PATH: Validation/Validation.csproj
+          PROJECT_FILE_PATH: Aspor.Validation/Aspor.Validation.csproj
           PACKAGE_NAME: Aspor.Validation
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
       - name: Publish Export
         uses: rohith/publish-nuget@v2
         with:
-          PROJECT_FILE_PATH: Export/Export.csproj
+          PROJECT_FILE_PATH: Aspor.Export/Aspor.Export.csproj
           PACKAGE_NAME: Aspor.Export
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
       - name: Publish Authorization
         uses: rohith/publish-nuget@v2
         with:
-          PROJECT_FILE_PATH: Authorization/Authorization.csproj
+          PROJECT_FILE_PATH: Aspor.Authorization/Aspor.Authorization.csproj
           PACKAGE_NAME: Aspor.Authorization
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
       - name: Publish EF
         uses: rohith/publish-nuget@v2
         with:
-          PROJECT_FILE_PATH: EF/EF.csproj
+          PROJECT_FILE_PATH: Aspor.EF/Aspor.EF.csproj
           PACKAGE_NAME: Aspor.EF
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
       - name: Publish Streaming.Core
         uses: rohith/publish-nuget@v2
         with:
-          PROJECT_FILE_PATH: Streaming.Core/Streaming.Core.csproj
+          PROJECT_FILE_PATH: Aspor.Streaming.Core/Aspor.Streaming.Core.csproj
           PACKAGE_NAME: Aspor.Streaming.Core
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
       - name: Publish Streaming
         uses: rohith/publish-nuget@v2
         with:
-          PROJECT_FILE_PATH: Streaming/Streaming.csproj
+          PROJECT_FILE_PATH: Aspor.Streaming/Aspor.Streaming.csproj
           PACKAGE_NAME: Aspor.Streaming
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
       - name: Publish Streaming.RabbitMQ
         uses: rohith/publish-nuget@v2
         with:
-          PROJECT_FILE_PATH: Streaming.RabbitMQ/Streaming.RabbitMQ.csproj
+          PROJECT_FILE_PATH: Aspor.Streaming.RabbitMQ/Aspor.Streaming.RabbitMQ.csproj
           PACKAGE_NAME: Aspor.Streaming.RabbitMQ
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}

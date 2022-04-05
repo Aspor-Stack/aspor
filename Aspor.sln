@@ -3,35 +3,35 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validation", "Validation\Validation.csproj", "{D0647397-2667-4B85-A479-DFB8834889D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aspor.Validation", "Aspor.Validation\Aspor.Validation.csproj", "{D0647397-2667-4B85-A479-DFB8834889D9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Streaming", "Streaming\Streaming.csproj", "{2EBC8AE3-FEF2-46A4-B865-D5D9D0D03422}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aspor.Streaming", "Aspor.Streaming\Aspor.Streaming.csproj", "{2EBC8AE3-FEF2-46A4-B865-D5D9D0D03422}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0160B2CD-87D8-49FB-91AD-47EADE0574FF} = {0160B2CD-87D8-49FB-91AD-47EADE0574FF}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization", "Authorization\Authorization.csproj", "{5A6C0100-832B-43C5-B15A-77F259E053A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aspor.Authorization", "Aspor.Authorization\Aspor.Authorization.csproj", "{5A6C0100-832B-43C5-B15A-77F259E053A6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Export", "Export\Export.csproj", "{F84DEE94-0569-4C08-94A0-A05D9B81A457}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aspor.Export", "Aspor.Export\Aspor.Export.csproj", "{F84DEE94-0569-4C08-94A0-A05D9B81A457}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{33B20869-5210-43E5-819F-F034DAC9A8B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aspor.Common", "Aspor.Common\Aspor.Common.csproj", "{33B20869-5210-43E5-819F-F034DAC9A8B3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EF", "EF\EF.csproj", "{8735405E-74C8-44C1-87AB-5E91155F80F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aspor.EF", "Aspor.EF\Aspor.EF.csproj", "{8735405E-74C8-44C1-87AB-5E91155F80F2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{5A6C0100-832B-43C5-B15A-77F259E053A6} = {5A6C0100-832B-43C5-B15A-77F259E053A6}
 		{33B20869-5210-43E5-819F-F034DAC9A8B3} = {33B20869-5210-43E5-819F-F034DAC9A8B3}
 		{D0647397-2667-4B85-A479-DFB8834889D9} = {D0647397-2667-4B85-A479-DFB8834889D9}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{7B569F0B-BAEE-426D-B493-1CFC527CF81D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aspor.Test", "Aspor.Test\Aspor.Test.csproj", "{7B569F0B-BAEE-426D-B493-1CFC527CF81D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F84DEE94-0569-4C08-94A0-A05D9B81A457} = {F84DEE94-0569-4C08-94A0-A05D9B81A457}
 		{2EBC8AE3-FEF2-46A4-B865-D5D9D0D03422} = {2EBC8AE3-FEF2-46A4-B865-D5D9D0D03422}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Streaming.Core", "Streaming.Core\Streaming.Core.csproj", "{0160B2CD-87D8-49FB-91AD-47EADE0574FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aspor.Streaming.Core", "Aspor.Streaming.Core\Aspor.Streaming.Core.csproj", "{0160B2CD-87D8-49FB-91AD-47EADE0574FF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Streaming.RabbitMQ", "Streaming.RabbitMQ\Streaming.RabbitMQ.csproj", "{D5D19EB5-1BAE-4551-910D-3794C9074823}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aspor.Streaming.RabbitMQ", "Aspor.Streaming.RabbitMQ\Aspor.Streaming.RabbitMQ.csproj", "{D5D19EB5-1BAE-4551-910D-3794C9074823}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0160B2CD-87D8-49FB-91AD-47EADE0574FF} = {0160B2CD-87D8-49FB-91AD-47EADE0574FF}
 	EndProjectSection

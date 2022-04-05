@@ -3,14 +3,14 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageId>Aspor.Authorization</PackageId>
-		<Version>1.0.9</Version>
+		<PackageId>Aspor.Common</PackageId>
+		<Version>1.0.11</Version>
 		<Authors>Aspor-Stack</Authors>
 		<RepositoryUrl>https://github.com/Aspor-Stack/aspor</RepositoryUrl>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<Description>Asp .Net authorization module of the aspor project. Aspor is a comprehensive web stack for building fast, modern and reliable web applications (SPA / PWA). The concept is based on a decoupled architecture with an independent OData interface running on an Asp .net service that is consumed by the React frontend application. Backend services are seperated with a Microservice architecture and connected together with Aspor streaming.</Description>
+		<Description>Asp .Net common module of the aspor project. Aspor is a comprehensive web stack for building fast, modern and reliable web applications (SPA / PWA). The concept is based on a decoupled architecture with an independent OData interface running on an Asp .net service that is consumed by the React frontend application. Backend services are seperated with a Microservice architecture and connected together with Aspor streaming.</Description>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -19,11 +19,7 @@
 
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.OData" Version="8.0.8" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	</ItemGroup>
 
 </Project>

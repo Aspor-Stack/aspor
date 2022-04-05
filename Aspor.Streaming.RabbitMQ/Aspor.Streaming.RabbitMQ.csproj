@@ -4,7 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageId>Aspor.Streaming.RabbitMQ</PackageId>
-		<Version>1.0.6</Version>
+		<Version>1.0.7</Version>
 		<Authors>Aspor-Stack</Authors>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
@@ -21,7 +21,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Streaming.Core\Streaming.Core.csproj" />
+		<ProjectReference Include="..\Aspor.Streaming.Core\Aspor.Streaming.Core.csproj" />
 	</ItemGroup>
 
 </Project>
