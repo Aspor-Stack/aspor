@@ -8,7 +8,7 @@ namespace Test.Model
 {
 
     [Table("boards")]
-    public class Board
+    public class Board : IEntityTimestamps
     {
 
         [Key]
@@ -24,6 +24,15 @@ namespace Test.Model
 
         [ForeignKey("ProjectId")]
         public virtual Project Project { get; set; }
+
+        [OnlyServer]
+        public DateTime CreatedOn { get; set; }
+
+        [OnlyServer]
+        public DateTime ModifiedOn { get; set; }
+
+        [OnlyServer]
+        public DateTime? DeletedOn { get; set; }
 
     }
 }

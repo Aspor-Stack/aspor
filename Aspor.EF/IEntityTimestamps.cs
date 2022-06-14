@@ -5,7 +5,7 @@ using System;
 namespace Aspor.EF
 {
     public interface IEntityTimestamps
-    {
+     {
         DateTime CreatedOn { get; set; }
 
         DateTime ModifiedOn { get; set; }

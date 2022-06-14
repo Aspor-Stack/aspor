@@ -4,7 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageId>Aspor.EF</PackageId>
-		<Version>1.0.15</Version>
+		<Version>1.0.16</Version>
 		<Authors>Aspor-Stack</Authors>
 		<RepositoryUrl>https://github.com/Aspor-Stack/aspor</RepositoryUrl>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -19,8 +19,8 @@
 
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
-		<PackageReference Include="Microsoft.AspNetCore.OData" Version="8.0.8" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.OData" Version="8.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
 	</ItemGroup>
 
 	<ItemGroup>

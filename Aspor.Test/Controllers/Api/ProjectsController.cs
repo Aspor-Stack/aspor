@@ -27,7 +27,7 @@ namespace Test.Controllers.Api
             return DbContext.Projects.Active();
         }
 
-        [HttpGet("{projectId}")]
+        [HttpGet("{projectId:guid}")]
         [EnableQuery]
       //  [RequiredPermission("project.read")]
         public SingleResult<Project> GetProject([FromRoute] Guid projectId)

@@ -4,7 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageId>Aspor.Validation</PackageId>
-		<Version>1.0.10</Version>
+		<Version>1.0.11</Version>
 		<Authors>Aspor-Stack</Authors>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
@@ -18,7 +18,7 @@
 
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
-		<PackageReference Include="Microsoft.AspNetCore.OData" Version="8.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.OData" Version="8.0.10" />
 	</ItemGroup>
 
 </Project>

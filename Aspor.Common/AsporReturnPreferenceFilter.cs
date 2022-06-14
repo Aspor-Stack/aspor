@@ -21,7 +21,6 @@ namespace Aspor.Common
         {
             ActionExecutedContext executedContext = await next();
             string method = context.HttpContext.Request.Method;
-            //method.Equals("POST") || => Not sure if we should include post requests
             if (!executedContext.Canceled && (method.Equals("PATCH") || method.Equals("PUT") || method.Equals("DELETE")))
             {
                 if (executedContext.Result is ObjectResult)
