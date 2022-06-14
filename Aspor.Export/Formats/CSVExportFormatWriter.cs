@@ -29,7 +29,7 @@ namespace Aspor.Export.Formats
             for (int i = 0; i < count; i++) WriteField("");
         }
 
-        public void WriteField(object? value)
+        public void WriteField(object value)
         {
             if(_position > 0) _builder.Append(';');
             if (value != null) _builder.Append(value);
