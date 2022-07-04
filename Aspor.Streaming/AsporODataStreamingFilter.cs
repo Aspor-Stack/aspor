@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.OData.UriParser;
 
 namespace Aspor.Streaming
 {
@@ -67,6 +68,7 @@ namespace Aspor.Streaming
             string result = context.Request.Path.Value.Substring(1).Replace(odataFeature.RoutePrefix+"/","").Replace("/", ".");
             if (context.Request.Method.Equals("PATCH") || context.Request.Method.Equals("PUT")) result += ".update";
             else if (context.Request.Method.Equals("DELETE")) result += ".delete";
+            else if (context.Request.Method.Equals("POST") && odataFeature.Path.LastSegment is EntitySetSegment) result += ".create";
             return result;
         }
 

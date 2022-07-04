@@ -20,7 +20,7 @@ namespace Test.Api
 
             builder.EntitySet<Board>("boards").EntityType.Configure((user) =>
             {
-
+                user.Collection.Action("test");
             });
 
             IEdmModel model = builder.GetEdmModel();

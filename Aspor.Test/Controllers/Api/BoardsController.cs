@@ -3,6 +3,7 @@ using Aspor.EF.Extensions;
 using Authorization.Permission;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Deltas;
+using Microsoft.AspNetCore.OData.Extensions;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Results;
 using System;
@@ -40,9 +41,23 @@ namespace Test.Controllers.Api
         [HttpPost]
         [EnableQuery]
    //     [RequiredPermission("project.create")]
-        public async Task<IActionResult> PostProject([FromBody] Project project)
+        public async Task<IActionResult> PostProject([FromBody] Board project)
         {
+            var x = HttpContext.ODataFeature().Path.LastSegment;
+
+
             return await PostEntityAsync(project);
+        }
+
+        [HttpPost("test")]
+        [EnableQuery]
+        //     [RequiredPermission("project.create")]
+        public async Task<IActionResult> PostTestProject()
+        {
+            var x = HttpContext.ODataFeature().Path.LastSegment;
+
+
+            return Ok();
         }
 
         [HttpPatch("{projectId}")]

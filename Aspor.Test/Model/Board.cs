@@ -17,7 +17,7 @@ namespace Test.Model
 
         [MinLength(4)]
         [MaxLength(128)]
-        [Required]
+      //  [Required]
         public string Name { get; set; }
 
         public Guid ProjectId { get; set; }
