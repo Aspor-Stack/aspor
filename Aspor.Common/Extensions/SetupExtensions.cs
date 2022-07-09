@@ -1,9 +1,14 @@
-﻿using Microsoft.AspNetCore.OData.Batch;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.OData.Batch;
 using Microsoft.AspNetCore.OData.Query.Validator;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.OData;
 using Microsoft.OData.Edm;
 using System.Collections.Generic;
+using System.Text.Json;
+using ServiceLifetime = Microsoft.Extensions.DependencyInjection.ServiceLifetime;
 
 namespace Aspor.Common.Extensions
 {
@@ -55,6 +60,24 @@ namespace Aspor.Common.Extensions
             }, ServiceLifetime.Singleton));
             return collection;
         }
+
+        public static IApplicationBuilder UseAsporODataExceptionHandler(this IApplicationBuilder builder)
+        {
+            builder.UseExceptionHandler(options => options.Run(async context =>
+            {
+                context.Response.StatusCode = 500;
+
+                var error = new ODataError()
+                {
+                    ErrorCode = "500",
+                    Message = "Internal server error (TraceId: " + context.TraceIdentifier + ")"
+                };
+
+                await context.Response.WriteAsync(error.ToString()).ConfigureAwait(false);
+            }));
+            return builder;
+        }
+
     }
 
 }

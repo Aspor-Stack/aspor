@@ -25,6 +25,7 @@ namespace Test.Controllers.Api
        // [RequiredPermission("project.read")]
         public IQueryable<Board> GetBoards()
         {
+            throw new NotImplementedException();
             return DbContext.Boards;
         }
 
@@ -52,7 +53,7 @@ namespace Test.Controllers.Api
         [HttpPost("test")]
         [EnableQuery]
         //     [RequiredPermission("project.create")]
-        public async Task<IActionResult> PostTestProject()
+        public IActionResult PostTestProject()
         {
             var x = HttpContext.ODataFeature().Path.LastSegment;
 
