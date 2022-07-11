@@ -12,10 +12,12 @@ namespace Aspor.Common
         public int Order => 2;
 
         private readonly int _pageSize;
+        private readonly int _maxExpansionDepth;
 
-        public AsporODataDefaultPageFilter(int pageSize)
+        public AsporODataDefaultPageFilter(int pageSize, int maxExpansionDepth)
         {
             _pageSize = pageSize;
+            _maxExpansionDepth = maxExpansionDepth;
         }
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
@@ -26,6 +28,7 @@ namespace Aspor.Common
                 EnableQueryAttribute queryAttribute = context.Filters.FirstOrDefault(e => e is EnableQueryAttribute) as EnableQueryAttribute;
                 if (queryAttribute != null)
                 {
+                    if (queryAttribute.MaxExpansionDepth > _maxExpansionDepth) queryAttribute.MaxExpansionDepth = _maxExpansionDepth;
                     if (!context.HttpContext.Request.Query.ContainsKey("$top"))
                     {
                         queryAttribute.PageSize = _pageSize;

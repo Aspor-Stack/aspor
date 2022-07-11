@@ -22,11 +22,11 @@ namespace Aspor.Common.Extensions
             return services;
         }
 
-        public static IMvcBuilder AddAsporODataPageSize(this IMvcBuilder mvc, int pageSize = 1000)
+        public static IMvcBuilder AddAsporODataPageSize(this IMvcBuilder mvc, int pageSize = 1000, int maxExpansionDepth = 4)
         {
             mvc.AddMvcOptions(config =>
             {
-                config.Filters.Add(new AsporODataDefaultPageFilter(pageSize));
+                config.Filters.Add(new AsporODataDefaultPageFilter(pageSize, maxExpansionDepth));
             });
             return mvc;
         }
