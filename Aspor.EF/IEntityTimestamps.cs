@@ -22,6 +22,7 @@ namespace Aspor.EF
                         if (entity.DeletedOn == null)
                         {
                             entity.DeletedOn = DateTime.Now;
+                            entity.ModifiedOn = DateTime.Now;
                             e.Entry.State = EntityState.Modified;
                         }
                         break;

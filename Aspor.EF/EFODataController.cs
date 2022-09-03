@@ -134,7 +134,11 @@ namespace Aspor.EF
             if (entity is IEntityExecutors executorEntity)
             {
                 AsporUser user = HttpContext.GetUserOrDefault();
-                if (user != null) executorEntity.DeletedBy = user.Id;
+                if (user != null)
+                {
+                    executorEntity.DeletedBy = user.Id;
+                    executorEntity.ModifiedBy = user.Id;
+                }
             }
 
             if (postAction != null) postAction.Invoke(entity);
@@ -142,6 +146,7 @@ namespace Aspor.EF
             if (entity is IEntityTimestamps timestampEntity)
             {
                 timestampEntity.DeletedOn = DateTime.Now;
+                timestampEntity.ModifiedOn = DateTime.Now;
                 _dbContext.Update(entity);
             }
             else
