@@ -41,7 +41,7 @@ namespace Aspor.EF
             return SingleResult.Create(queryable);
         }
 
-        protected async Task<IActionResult> PostEntityAsync<TEntity>(TEntity entity, Action<TEntity> postAction = null) where TEntity : class
+        protected async Task<IActionResult> PostEntityAsync<TEntity>(TEntity entity, Action<TEntity> postAction = null, Action<TEntity> afterPostAction = null) where TEntity : class
         {
             await HttpContext.ValidateRulesAsync(entity);
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -65,9 +65,9 @@ namespace Aspor.EF
             }
 
             _dbContext.Add(entity);
-            if(postAction != null) postAction.Invoke(entity);
+            postAction?.Invoke(entity);
             await _dbContext.SaveChangesAsync();
-
+            afterPostAction?.Invoke(entity);
             return Ok(entity);
         }
 
