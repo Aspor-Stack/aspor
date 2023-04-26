@@ -74,7 +74,7 @@ namespace Aspor.Streaming
 
         private object GetContent(IActionResult result)
         {
-            if (result is ObjectResult) return ((ObjectResult)result).Value;
+            if (result is OkObjectResult) return ((OkObjectResult)result).Value;
             else if (result != null && result.GetType().IsGenericType)
             {
                 Type type = result.GetType().GetGenericTypeDefinition();
