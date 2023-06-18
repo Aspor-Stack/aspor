@@ -27,10 +27,7 @@ namespace Aspor.EF
                         }
                         break;
                     case EntityState.Modified:
-                        if (entity.DeletedOn != null)
-                        {
-                            entity.ModifiedOn = DateTime.Now;
-                        }
+                        entity.ModifiedOn = DateTime.Now;
                         break;
                     case EntityState.Added:
                         entity.CreatedOn = DateTime.Now;
